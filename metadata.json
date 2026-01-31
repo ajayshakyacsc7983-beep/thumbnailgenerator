@@ -1,0 +1,7 @@
+{
+  "name": "NanoThumbnail Pro",
+  "description": "Create high-quality cinematic thumbnails from any video using Gemini 2.5 Flash Image. Extract character poses, select character counts, and edit with text prompts.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

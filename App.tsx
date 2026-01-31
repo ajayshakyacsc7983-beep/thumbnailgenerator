@@ -16,9 +16,9 @@ import {
   ChevronRight,
   RotateCcw
 } from 'lucide-react';
-import { ExtractedFrame, ThumbnailSettings, AppState, TextPosition } from './types';
-import { extractFrameFromVideo, formatTime } from './utils';
-import { generateThumbnail, editGeneratedThumbnail } from './geminiService';
+import { ExtractedFrame, ThumbnailSettings, AppState, TextPosition } from './types.ts';
+import { extractFrameFromVideo, formatTime } from './utils.ts';
+import { generateThumbnail, editGeneratedThumbnail } from './geminiService.ts';
 
 const App: React.FC = () => {
   const [state, setState] = useState<AppState>({
@@ -70,7 +70,6 @@ const App: React.FC = () => {
     setEditPrompt('');
     setManualTime('00:00');
     
-    // Clear status message after 2 seconds
     setTimeout(() => {
       setState(prev => ({ ...prev, statusMessage: '' }));
     }, 2000);

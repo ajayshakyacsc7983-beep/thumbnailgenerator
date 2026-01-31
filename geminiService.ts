@@ -1,12 +1,11 @@
 
 import { GoogleGenAI } from "@google/genai";
-import { ThumbnailSettings } from "./types";
+import { ThumbnailSettings } from "./types.ts";
 
 export const generateThumbnail = async (
   frames: string[], 
   settings: ThumbnailSettings
 ): Promise<string | null> => {
-  // Create a new GoogleGenAI instance right before making an API call to ensure it always uses the most up-to-date API key.
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
   const prompt = `
@@ -57,7 +56,6 @@ export const generateThumbnail = async (
     });
 
     for (const part of response.candidates?.[0]?.content?.parts || []) {
-      // Find the image part, do not assume it is the first part.
       if (part.inlineData) {
         return `data:image/png;base64,${part.inlineData.data}`;
       }
@@ -73,7 +71,6 @@ export const editGeneratedThumbnail = async (
   base64Image: string,
   editPrompt: string
 ): Promise<string | null> => {
-  // Create a new GoogleGenAI instance right before making an API call to ensure it always uses the most up-to-date API key.
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
   try {
@@ -98,7 +95,6 @@ export const editGeneratedThumbnail = async (
     });
 
     for (const part of response.candidates?.[0]?.content?.parts || []) {
-      // Find the image part, do not assume it is the first part.
       if (part.inlineData) {
         return `data:image/png;base64,${part.inlineData.data}`;
       }
